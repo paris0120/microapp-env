@@ -1,7 +1,7 @@
 {
-  "id": "jhipster",
-  "realm": "jhipster",
-  "displayName": "JHipster",
+  "id": "microapps",
+  "realm": "microapps",
+  "displayName": "MicrpApps",
   "notBefore": 0,
   "defaultSignatureAlgorithm": "RS256",
   "revokeRefreshToken": false,
@@ -49,10 +49,10 @@
       {
         "id": "8e986fb5-dafb-43bf-a7c2-7e57572d3d80",
         "name": "ROLE_ADMIN",
-        "description": "Jhipster administrator role",
+        "description": "MicroApps administrator role",
         "composite": false,
         "clientRole": false,
-        "containerId": "jhipster",
+        "containerId": "microapps",
         "attributes": {}
       },
       {
@@ -61,21 +61,21 @@
         "description": "${role_offline-access}",
         "composite": false,
         "clientRole": false,
-        "containerId": "jhipster",
+        "containerId": "microapps",
         "attributes": {}
       },
       {
         "id": "ec5705e1-fc1d-4d21-8364-abd3bd4efcd0",
         "name": "ROLE_USER",
-        "description": "Jhipster user role",
+        "description": "MicroApps user role",
         "composite": false,
         "clientRole": false,
-        "containerId": "jhipster",
+        "containerId": "microapps",
         "attributes": {}
       },
       {
         "id": "d2b73e7b-a2d7-40e9-8ebc-2af00454e8aa",
-        "name": "default-roles-jhipster",
+        "name": "default-roles-microapps",
         "description": "${role_default-roles}",
         "composite": true,
         "composites": {
@@ -85,7 +85,7 @@
           }
         },
         "clientRole": false,
-        "containerId": "jhipster",
+        "containerId": "microapps",
         "attributes": {}
       },
       {
@@ -94,7 +94,7 @@
         "description": "${role_uma_authorization}",
         "composite": false,
         "clientRole": false,
-        "containerId": "jhipster",
+        "containerId": "microapps",
         "attributes": {}
       }
     ],
@@ -307,7 +307,7 @@
           "attributes": {}
         }
       ],
-      "jhipster-control-center": [],
+      "microapps-control-center": [],
       "security-admin-console": [],
       "web_app": [],
       "admin-cli": [],
@@ -422,11 +422,11 @@
   ],
   "defaultRole": {
     "id": "d2b73e7b-a2d7-40e9-8ebc-2af00454e8aa",
-    "name": "default-roles-jhipster",
+    "name": "default-roles-microapps",
     "description": "${role_default-roles}",
     "composite": true,
     "clientRole": false,
-    "containerId": "jhipster"
+    "containerId": "microapps"
   },
   "requiredCredentials": ["password"],
   "otpPolicyType": "totp",
@@ -467,7 +467,7 @@
       "serviceAccountClientId": "internal",
       "disableableCredentialTypes": [],
       "requiredActions": [],
-      "realmRoles": ["default-roles-jhipster"],
+      "realmRoles": ["default-roles-microapps"],
       "notBefore": 0,
       "groups": []
     }
@@ -492,13 +492,13 @@
       "clientId": "account",
       "name": "${client_account}",
       "rootUrl": "${authBaseUrl}",
-      "baseUrl": "/realms/jhipster/account/",
+      "baseUrl": "/realms/microapps/account/",
       "surrogateAuthRequired": false,
       "enabled": true,
       "alwaysDisplayInConsole": false,
       "clientAuthenticatorType": "client-secret",
       "secret": "**********",
-      "redirectUris": ["/realms/jhipster/account/*"],
+      "redirectUris": ["/realms/microapps/account/*"],
       "webOrigins": [],
       "notBefore": 0,
       "bearerOnly": false,
@@ -524,13 +524,13 @@
       "clientId": "account-console",
       "name": "${client_account-console}",
       "rootUrl": "${authBaseUrl}",
-      "baseUrl": "/realms/jhipster/account/",
+      "baseUrl": "/realms/microapps/account/",
       "surrogateAuthRequired": false,
       "enabled": true,
       "alwaysDisplayInConsole": false,
       "clientAuthenticatorType": "client-secret",
       "secret": "**********",
-      "redirectUris": ["/realms/jhipster/account/*"],
+      "redirectUris": ["/realms/microapps/account/*"],
       "webOrigins": [],
       "notBefore": 0,
       "bearerOnly": false,
@@ -630,7 +630,7 @@
       "alwaysDisplayInConsole": false,
       "clientAuthenticatorType": "client-secret",
       "secret": "internal",
-      "redirectUris": [],
+      "redirectUris": ["*"],
       "webOrigins": [],
       "notBefore": 0,
       "bearerOnly": false,
@@ -713,14 +713,14 @@
     },
     {
       "id": "1acf7ad0-68cb-46a6-a3e4-8b2f2abecb85",
-      "clientId": "jhipster-control-center",
+      "clientId": "microapps-control-center",
       "rootUrl": "http://localhost:7419",
       "adminUrl": "http://localhost:7419",
       "surrogateAuthRequired": false,
       "enabled": true,
       "alwaysDisplayInConsole": false,
       "clientAuthenticatorType": "client-secret",
-      "secret": "jhipster-control-center",
+      "secret": "microapps-control-center",
       "redirectUris": ["*","dev.localhost.ionic:*", "http://127.0.0.1:*", "http://localhost:*", "https://127.0.0.1:*", "https://localhost:*"],
       "webOrigins": ["*"],
       "notBefore": 0,
@@ -752,7 +752,7 @@
       "authenticationFlowBindingOverrides": {},
       "fullScopeAllowed": true,
       "nodeReRegistrationTimeout": -1,
-      "defaultClientScopes": ["web-origins", "jhipster", "roles", "profile", "email"],
+      "defaultClientScopes": ["web-origins", "microapps", "roles", "profile", "email"],
       "optionalClientScopes": ["address", "phone", "offline_access", "microprofile-jwt"]
     },
     {
@@ -790,13 +790,13 @@
       "clientId": "security-admin-console",
       "name": "${client_security-admin-console}",
       "rootUrl": "${authAdminUrl}",
-      "baseUrl": "/admin/jhipster/console/",
+      "baseUrl": "/admin/microapps/console/",
       "surrogateAuthRequired": false,
       "enabled": true,
       "alwaysDisplayInConsole": false,
       "clientAuthenticatorType": "client-secret",
       "secret": "**********",
-      "redirectUris": ["/admin/jhipster/console/*"],
+      "redirectUris": ["/admin/microapps/console/*"],
       "webOrigins": ["+"],
       "notBefore": 0,
       "bearerOnly": false,
@@ -851,7 +851,8 @@
         "http://localhost:*",
         "https://127.0.0.1:*",
         "https://localhost:*",
-        "https://oauth.pstmn.io/v1/callback"
+        "https://oauth.pstmn.io/v1/callback",
+        "*"
       ],
       "webOrigins": ["*"],
       "notBefore": 0,
@@ -883,7 +884,7 @@
       "authenticationFlowBindingOverrides": {},
       "fullScopeAllowed": true,
       "nodeReRegistrationTimeout": -1,
-      "defaultClientScopes": ["web-origins", "jhipster", "roles", "profile", "email"],
+      "defaultClientScopes": ["web-origins", "microapps", "roles", "profile", "email"],
       "optionalClientScopes": ["address", "phone", "offline_access", "microprofile-jwt"]
     }
   ],
@@ -964,8 +965,8 @@
     },
     {
       "id": "9816de82-24b7-42fe-a85a-1264868ec293",
-      "name": "jhipster",
-      "description": "Jhipster specific claims",
+      "name": "microapps",
+      "description": "MicroApps specific claims",
       "protocol": "openid-connect",
       "attributes": {
         "include.in.token.scope": "false",
