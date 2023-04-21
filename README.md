@@ -14,5 +14,14 @@ docker compose -f <server-name>.yml up
 or start all necessary servers with 
 
 ```
-docker compose -f app.yml up
+docker compose -f app.yml up --remove-orphans
 ```
+
+### Ports
+- mysql: 3306
+- neo4j: 7474
+- elasticsearch: 9200
+- consul: 8300
+- keycloak: 9080
+- kafka: 9092
+- jenkins: 8080
