@@ -1,7 +1,7 @@
 # This configuration is intended for development purpose, it's **your** responsibility to harden it for production
 version: '3.8'
 services:
-  gateway-mysql:
+  mysql:
     image: mysql:8.0.30
     # volumes:
     #   - ~/volumes/microapps/mysql/:/var/lib/mysql/
@@ -16,39 +16,47 @@ services:
     ports:
       - 3306:3306
     command: mysqld --lower_case_table_names=1 --skip-ssl --character_set_server=utf8mb4 --explicit_defaults_for_timestamp
-  jenkins:
-    image: jenkins/jenkins:lts
-    privileged: true
-    user: root
-    ports:
-     - 8080:8080
-     - 50000:50000
-    volumes:
-     - ~/docker/volumes/jenkins/jenkins_configuration:/var/jenkins_home
-     - /var/run/docker.sock:/var/run/docker.sock
-  neo4j:
-    image: neo4j:4.4.9
-    volumes:
-      - ~/docker/volumes/neo4j/:/data
-    environment:
-      - NEO4J_AUTH=none
+  algoflows-mongodb:
+    image: mongo:4.4.15
     # If you want to expose these ports outside your dev PC,
     # remove the "127.0.0.1:" prefix
     ports:
-      - '127.0.0.1:7474:7474'
-      - '127.0.0.1:7687:7687'
-  elasticsearch:
-    image: docker.elastic.co/elasticsearch/elasticsearch:7.17.4
+      - 127.0.0.1:27017:27017
     volumes:
-      - ~/docker/volumes/elasticsearch/:/usr/share/elasticsearch/data/
-    # If you want to expose these ports outside your dev PC,
-    # remove the "127.0.0.1:" prefix
-    ports:
-      - 127.0.0.1:9200:9200
-      - 127.0.0.1:9300:9300
-    environment:
-      - 'ES_JAVA_OPTS=-Xms256m -Xmx256m'
-      - 'discovery.type=single-node'
+      - ~/volumes/microapps/mongodb/:/data/db/
+#  jenkins:
+#    image: jenkins/jenkins:lts
+#    privileged: true
+#    user: root
+#    ports:
+#     - 1080:8080
+#     - 50000:50000
+#    volumes:
+#     - ~/docker/volumes/jenkins/jenkins_configuration:/var/jenkins_home
+#     - /var/run/docker.sock:/var/run/docker.sock
+#  neo4j:
+#    image: neo4j:4.4.9
+#    volumes:
+#      - ~/docker/volumes/neo4j/:/data
+#    environment:
+#      - NEO4J_AUTH=none
+#    # If you want to expose these ports outside your dev PC,
+#    # remove the "127.0.0.1:" prefix
+#    ports:
+#      - '127.0.0.1:7474:7474'
+#      - '127.0.0.1:7687:7687'
+#  elasticsearch:
+#    image: docker.elastic.co/elasticsearch/elasticsearch:7.17.4
+#    volumes:
+#      - ~/docker/volumes/elasticsearch/:/usr/share/elasticsearch/data/
+#    # If you want to expose these ports outside your dev PC,
+#    # remove the "127.0.0.1:" prefix
+#    ports:
+#      - 127.0.0.1:9200:9200
+#      - 127.0.0.1:9300:9300
+#    environment:
+#      - 'ES_JAVA_OPTS=-Xms256m -Xmx256m'
+#      - 'discovery.type=single-node'
   kafka:
     image: confluentinc/cp-kafka:7.2.1
     # If you want to expose these ports outside your dev PC,
@@ -77,7 +85,6 @@ services:
       - 8500:8500
       - 8600:8600
     command: consul agent -dev -ui -client 0.0.0.0 -log-level=INFO
-
   consul-config-loader:
     image: jhipster/consul-config-loader:v0.4.1
     volumes:
